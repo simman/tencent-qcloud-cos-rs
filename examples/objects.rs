@@ -1,15 +1,16 @@
 //! 上传文件
 
-use qcos::acl::{AclHeader, ObjectAcl};
-use qcos::client::Client;
-use qcos::objects::{mime, Objects};
-use qcos::request::ErrNo;
+use tencent_qcloud_cos_rs::acl::{AclHeader, ObjectAcl};
+use tencent_qcloud_cos_rs::client::Client;
+use tencent_qcloud_cos_rs::objects::{mime, Objects};
+use tencent_qcloud_cos_rs::request::ErrNo;
 
 #[tokio::main]
 async fn main() {
     let client = Client::new(
         "Your secrect id",
         "Your secrect key",
+        Some(String::from("Your security token")),
         "bucket name",
         "region",
     );

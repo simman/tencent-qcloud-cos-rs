@@ -1,4 +1,4 @@
-[![qcos](https://github.com/bujnlc8/qcos/actions/workflows/qcos.yml/badge.svg?branch=master)](https://github.com/bujnlc8/qcos/actions/workflows/qcos.yml)
+[![qcos](https://github.com/simman/tencent-qcloud-cos-rs/actions/workflows/qcos.yml/badge.svg?branch=master)](https://github.com/simman/tencent-qcloud-cos-rs/actions/workflows/qcos.yml)
 
 **异步版本** `async`/`await`
 
@@ -7,15 +7,16 @@
 # How to use
 
 ```rust
-use qcos::acl::{AclHeader, ObjectAcl};
-use qcos::client::Client;
-use qcos::objects::{mime, ErrNo, Objects};
+use tencent_qcloud_cos_rs::acl::{AclHeader, ObjectAcl};
+use tencent_qcloud_cos_rs::client::Client;
+use tencent_qcloud_cos_rs::objects::{mime, ErrNo, Objects};
 
 #[tokio::main]
 async fn main() {
     let client = Client::new(
         "Your secrect id",
         "Your secrect key",
+        Some(String::from("Your security token")), // or None
         "bucket name",
         "region",
     );
@@ -33,7 +34,7 @@ async fn main() {
 
 如果操作成功，会打印出`success`, 否则会打印出失败原因。
 
-更多的例子请参考[examples](https://github.com/bujnlc8/qcos/tree/master/examples)。
+更多的例子请参考[examples](https://github.com/simman/tencent-qcloud-cos-rs/tree/master/examples)。
 
 # Installation
 
@@ -41,5 +42,9 @@ insert into your project's cargo.toml block next line
 
 ```
 [dependencies]
-qcos = "0.1.6"
+tencent-qcloud-cos-rs = "0.1.0"
 ```
+
+# Other
+
+fork base: [https://github.com/bujnlc8/qcos](https://github.com/bujnlc8/qcos)

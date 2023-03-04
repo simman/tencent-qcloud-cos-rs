@@ -1,16 +1,17 @@
 //! bucket管理
 
-use qcos::acl::{AclHeader, BucketAcl};
-use qcos::bucket::Bucket;
-use qcos::client::Client;
-use qcos::request::ErrNo;
-use qcos::service::Service;
+use tencent_qcloud_cos_rs::acl::{AclHeader, BucketAcl};
+use tencent_qcloud_cos_rs::bucket::Bucket;
+use tencent_qcloud_cos_rs::client::Client;
+use tencent_qcloud_cos_rs::request::ErrNo;
+use tencent_qcloud_cos_rs::service::Service;
 
 #[tokio::main]
 async fn main() {
     let client = Client::new(
         "Your secrect id",
         "Your secrect key",
+        Some(String::from("Your security token")),
         "bucket-name",
         "region",
     );

@@ -16,10 +16,10 @@ impl Service for Client {
     见[文档](https://cloud.tencent.com/document/product/436/8291)
     # Examples
     ```
-    use qcos::client::Client;
-    use qcos::service::Service;
+    use tencent_qcloud_cos_rs::client::Client;
+    use tencent_qcloud_cos_rs::service::Service;
     async {
-    let client = Client::new("foo", "bar", "qcloudtest-1256650966", "ap-guangzhou");
+    let client = Client::new("foo", "bar", None, "qcloudtest-1256650966", "ap-guangzhou");
     let resp = client.get_bucket_list().await;
     assert!(resp.error_message.contains("403"));
     };

@@ -27,7 +27,7 @@ pub struct InitiateMultipartUploadResult {
 }
 
 /// ```
-/// use qcos::request::{CompleteMultipartUpload, Part};
+/// use tencent_qcloud_cos_rs::request::{CompleteMultipartUpload, Part};
 /// use quick_xml::se::to_string;
 /// let objs = CompleteMultipartUpload{part:vec![Part{part_number: 1, etag: "abc".to_string()}, Part{part_number: 2, etag: "abc".to_string()}]};
 /// let s = to_string(&objs).unwrap();
@@ -78,7 +78,7 @@ pub enum Method {
 
 /// # Examples
 /// ```
-/// use qcos::request::ErrNo;
+/// use tencent_qcloud_cos_rs::request::ErrNo;
 /// println!("{:#?}", ErrNo::OTHER);
 /// ```
 impl ToString for ErrNo {
@@ -170,7 +170,7 @@ impl Request {
     /// send Head request
     /// # Examples
     /// ```
-    /// use qcos::request::Request;
+    /// use tencent_qcloud_cos_rs::request::Request;
     /// use std::collections::HashMap;
     /// async {
     /// let mut headers = HashMap::new();
@@ -197,7 +197,7 @@ impl Request {
     /// send get request
     /// # Examples
     /// ```
-    /// use qcos::request::Request;
+    /// use tencent_qcloud_cos_rs::request::Request;
     /// use std::collections::HashMap;
     /// async {
     /// let mut headers = HashMap::new();
@@ -225,7 +225,7 @@ impl Request {
     /// # Examples
     /// ```
     /// use reqwest::Body;
-    /// use qcos::request::Request;
+    /// use tencent_qcloud_cos_rs::request::Request;
     /// use std::collections::HashMap;
     /// use serde_json::json;
     /// async {

@@ -40,13 +40,13 @@ impl Bucket for Client {
     /// 见[官网文档](https://cloud.tencent.com/document/product/436/7738)
     /// # Examples
     /// ```
-    /// use qcos::client::Client;
-    /// use qcos::bucket::Bucket;
-    /// use qcos::acl::{AclHeader, BucketAcl};
+    /// use tencent_qcloud_cos_rs::client::Client;
+    /// use tencent_qcloud_cos_rs::bucket::Bucket;
+    /// use tencent_qcloud_cos_rs::acl::{AclHeader, BucketAcl};
     /// async {
     /// let mut acl_header = AclHeader::new();
     /// acl_header.insert_bucket_x_cos_acl(BucketAcl::PublicRead);
-    /// let client = Client::new("foo", "bar", "qcloudtest-1256650966", "ap-guangzhou");
+    /// let client = Client::new("foo", "bar", None, "qcloudtest-1256650966", "ap-guangzhou");
     /// let res = client.put_bucket(Some(&acl_header)).await;
     /// assert!(res.error_message.contains("403"));
     /// };
@@ -68,10 +68,10 @@ impl Bucket for Client {
     /// 见[官网文档](https://cloud.tencent.com/document/product/436/7732)
     /// # Examples
     /// ```
-    /// use qcos::client::Client;
-    /// use qcos::bucket::Bucket;
+    /// use tencent_qcloud_cos_rs::client::Client;
+    /// use tencent_qcloud_cos_rs::bucket::Bucket;
     /// async {
-    /// let client = Client::new("foo", "bar", "qcloudtest-1256650966", "ap-guangzhou");
+    /// let client = Client::new("foo", "bar", None, "qcloudtest-1256650966", "ap-guangzhou");
     /// let res = client.delete_bucket().await;
     /// assert!(res.error_message.contains("403"));
     /// };
@@ -92,10 +92,10 @@ impl Bucket for Client {
     /// 见[官网文档](https://cloud.tencent.com/document/product/436/7734)
     /// # Examples
     /// ```
-    /// use qcos::client::Client;
-    /// use qcos::bucket::Bucket;
+    /// use tencent_qcloud_cos_rs::client::Client;
+    /// use tencent_qcloud_cos_rs::bucket::Bucket;
     /// async {
-    /// let client = Client::new("foo", "bar", "qcloudtest-1256650966", "ap-guangzhou");
+    /// let client = Client::new("foo", "bar", None, "qcloudtest-1256650966", "ap-guangzhou");
     /// let res = client.list_objects("prefix", "", "", "/", 100).await;
     /// assert!(res.error_message.contains("403"));
     /// };
@@ -141,10 +141,10 @@ impl Bucket for Client {
     /// 存储桶不存在，返回 `ErrNo::STATUS`, error_message包含404。
     /// # Examples
     /// ```
-    /// use qcos::client::Client;
-    /// use qcos::bucket::Bucket;
+    /// use tencent_qcloud_cos_rs::client::Client;
+    /// use tencent_qcloud_cos_rs::bucket::Bucket;
     /// async {
-    /// let client = Client::new("foo", "bar", "qcloudtest-1256650966", "ap-guangzhou");
+    /// let client = Client::new("foo", "bar", None, "qcloudtest-1256650966", "ap-guangzhou");
     /// let res = client.check_bucket().await;
     /// assert!(res.error_message.contains("403"));
     /// };
@@ -163,13 +163,13 @@ impl Bucket for Client {
     /// [官网文档](https://cloud.tencent.com/document/product/436/7737)
     /// # Examples
     /// ```
-    /// use qcos::client::Client;
-    /// use qcos::bucket::Bucket;
-    /// use qcos::acl::{AclHeader, BucketAcl};
+    /// use tencent_qcloud_cos_rs::client::Client;
+    /// use tencent_qcloud_cos_rs::bucket::Bucket;
+    /// use tencent_qcloud_cos_rs::acl::{AclHeader, BucketAcl};
     /// async {
     /// let mut acl_header = AclHeader::new();
     /// acl_header.insert_bucket_x_cos_acl(BucketAcl::PublicRead);
-    /// let client = Client::new("foo", "bar", "qcloudtest-1256650966", "ap-guangzhou");
+    /// let client = Client::new("foo", "bar", None, "qcloudtest-1256650966", "ap-guangzhou");
     /// let res = client.put_bucket(Some(&acl_header)).await;
     /// assert!(res.error_message.contains("403"));
     /// };

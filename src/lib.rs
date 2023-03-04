@@ -4,13 +4,13 @@
 基本用法:
 
 ```
- use qcos::client::Client;
- use qcos::objects::Objects;
+ use tencent_qcloud_cos_rs::client::Client;
+ use tencent_qcloud_cos_rs::objects::Objects;
  use mime;
 
  #[tokio::main]
  async fn main() {
-    let client = Client::new("foo", "bar", "qcloudtest-1256650966", "ap-guangzhou");
+    let client = Client::new("foo", "bar", None, "qcloudtest-1256650966", "ap-guangzhou");
     /// 上传文件
     let res = client.put_object("Cargo.toml", "Cargo.toml", mime::TEXT_PLAIN_UTF_8, None).await;
     /// 删除文件

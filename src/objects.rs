@@ -92,14 +92,14 @@ impl Objects for client::Client {
     /// 见[官网文档](https://cloud.tencent.com/document/product/436/7749)
     /// # Examples
     /// ```
-    /// use qcos::client::Client;
-    /// use qcos::objects::Objects;
+    /// use tencent_qcloud_cos_rs::client::Client;
+    /// use tencent_qcloud_cos_rs::objects::Objects;
     /// use mime;
-    /// use qcos::acl::{AclHeader, ObjectAcl};
+    /// use tencent_qcloud_cos_rs::acl::{AclHeader, ObjectAcl};
     /// async {
     /// let mut acl_header = AclHeader::new();
     /// acl_header.insert_object_x_cos_acl(ObjectAcl::AuthenticatedRead);
-    /// let client = Client::new("foo", "bar", "qcloudtest-1256650966", "ap-guangzhou");
+    /// let client = Client::new("foo", "bar", None, "qcloudtest-1256650966", "ap-guangzhou");
     /// let res = client.put_object("Cargo.toml", "Cargo.toml", mime::TEXT_PLAIN_UTF_8, Some(&acl_header)).await;
     /// assert!(res.error_message.contains("403"));
     /// };
@@ -154,14 +154,14 @@ impl Objects for client::Client {
     /// 见[官网文档](https://cloud.tencent.com/document/product/436/7749)
     /// # Examples
     /// ```
-    /// use qcos::client::Client;
-    /// use qcos::objects::Objects;
+    /// use tencent_qcloud_cos_rs::client::Client;
+    /// use tencent_qcloud_cos_rs::objects::Objects;
     /// use mime;
-    /// use qcos::acl::{AclHeader, ObjectAcl};
+    /// use tencent_qcloud_cos_rs::acl::{AclHeader, ObjectAcl};
     /// async {
     /// let mut acl_header = AclHeader::new();
     /// acl_header.insert_object_x_cos_acl(ObjectAcl::AuthenticatedRead);
-    /// let client = Client::new("foo", "bar", "qcloudtest-1256650966", "ap-guangzhou");
+    /// let client = Client::new("foo", "bar", None, "qcloudtest-1256650966", "ap-guangzhou");
     /// // 分块传输
     /// let res = client.put_big_object("Cargo.toml","Cargo.toml", mime::TEXT_PLAIN_UTF_8, "ARCHIVE", Some(&acl_header), 1024 * 1024 * 100).await;
     /// assert!(res.error_message.contains("403"));
@@ -276,14 +276,14 @@ impl Objects for client::Client {
     /// 见[官网文档](https://cloud.tencent.com/document/product/436/7749)
     /// # Examples
     /// ```
-    /// use qcos::client::Client;
-    /// use qcos::objects::Objects;
+    /// use tencent_qcloud_cos_rs::client::Client;
+    /// use tencent_qcloud_cos_rs::objects::Objects;
     /// use mime;
-    /// use qcos::acl::{AclHeader, ObjectAcl};
+    /// use tencent_qcloud_cos_rs::acl::{AclHeader, ObjectAcl};
     /// async {
     /// let mut acl_header = AclHeader::new();
     /// acl_header.insert_object_x_cos_acl(ObjectAcl::AuthenticatedRead);
-    /// let client = Client::new("foo", "bar", "qcloudtest-1256650966", "ap-guangzhou");
+    /// let client = Client::new("foo", "bar", None, "qcloudtest-1256650966", "ap-guangzhou");
     /// let buffer = std::fs::read("Cargo.toml").unwrap();
     /// let res = client.put_object_binary(buffer, "Cargo.toml", mime::TEXT_PLAIN_UTF_8, Some(&acl_header)).await;
     /// assert!(res.error_message.contains("403"));
@@ -323,10 +323,10 @@ impl Objects for client::Client {
     /// 见[官网文档](https://cloud.tencent.com/document/product/436/7743)
     /// # Examples
     /// ```
-    /// use qcos::client::Client;
-    /// use qcos::objects::Objects;
+    /// use tencent_qcloud_cos_rs::client::Client;
+    /// use tencent_qcloud_cos_rs::objects::Objects;
     /// async {
-    /// let client = Client::new("foo", "bar", "qcloudtest-1256650966", "ap-guangzhou");
+    /// let client = Client::new("foo", "bar", None, "qcloudtest-1256650966", "ap-guangzhou");
     /// let res = client.delete_object("Cargo.toml").await;
     /// assert!(res.error_message.contains("403"))
     /// };
@@ -352,10 +352,10 @@ impl Objects for client::Client {
     /// 见[官网文档](https://cloud.tencent.com/document/product/436/7753)
     /// # Examples
     /// ```
-    /// use qcos::client::Client;
-    /// use qcos::objects::Objects;
+    /// use tencent_qcloud_cos_rs::client::Client;
+    /// use tencent_qcloud_cos_rs::objects::Objects;
     /// async {
-    /// let client = Client::new("foo", "bar", "qcloudtest-1256650966", "ap-guangzhou");
+    /// let client = Client::new("foo", "bar", None, "qcloudtest-1256650966", "ap-guangzhou");
     /// let res = client.get_object_binary("Cargo.toml").await;
     /// assert!(res.error_message.contains("403"));
     /// };
@@ -376,10 +376,10 @@ impl Objects for client::Client {
     /// 见[官网文档](https://cloud.tencent.com/document/product/436/7753)
     /// # Examples
     /// ```
-    /// use qcos::client::Client;
-    /// use qcos::objects::Objects;
+    /// use tencent_qcloud_cos_rs::client::Client;
+    /// use tencent_qcloud_cos_rs::objects::Objects;
     /// async {
-    /// let client = Client::new("foo", "bar", "qcloudtest-1256650966", "ap-guangzhou");
+    /// let client = Client::new("foo", "bar", None, "qcloudtest-1256650966", "ap-guangzhou");
     /// let res = client.get_object("Cargo.toml", "Cargo.toml").await;
     /// assert!(res.error_message.contains("403"));
     /// };

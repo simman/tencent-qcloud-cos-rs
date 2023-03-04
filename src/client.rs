@@ -5,8 +5,8 @@ use crate::signer::Signer;
 /// 接口请求Client
 /// # Examples
 /// ```
-/// use qcos::client::Client;
-/// let client = Client::new("secrect_id", "secrect_key", "bucket", "region");
+/// use tencent_qcloud_cos_rs::client::Client;
+/// let client = Client::new("secrect_id", "secrect_key", None, "bucket", "region");
 /// assert_eq!(client.get_host(), "bucket.cos.region.myqcloud.com");
 ///```
 use chrono::Utc;
@@ -15,6 +15,7 @@ use std::collections::HashMap;
 pub struct Client {
     secrect_id: String,
     secrect_key: String,
+    security_token: Option<String>,
     bucket: String,
     region: String,
 }
@@ -23,12 +24,14 @@ impl Client {
     pub fn new(
         secrect_id: impl Into<String>,
         secrect_key: impl Into<String>,
+        security_token: Option<String>,
         bucket: impl Into<String>,
         region: impl Into<String>,
     ) -> Self {
         Self {
             secrect_id: secrect_id.into(),
             secrect_key: secrect_key.into(),
+            security_token,
             bucket: bucket.into(),
             region: region.into(),
         }
@@ -97,6 +100,7 @@ impl Client {
         let signature = Signer::new(method, url_path, Some(&headers), query).get_signature(
             self.get_secrect_key(),
             self.get_secrect_id(),
+            self.security_token.clone(),
             7200,
         );
         headers.insert("Authorization".to_string(), signature);
@@ -120,6 +124,7 @@ impl Client {
         let signature = Signer::new("get", &url_path, Some(&headers), None).get_signature(
             self.get_secrect_key(),
             self.get_secrect_id(),
+            self.security_token.clone(),
             expire,
         );
         format!("{url}?{signature}", url = full_url, signature = signature)

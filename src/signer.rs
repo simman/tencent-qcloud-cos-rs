@@ -144,14 +144,18 @@ impl<'a> Signer<'a> {
         s.join("\n") + "\n"
     }
 
-    pub fn get_signature(&self, secret_key: &str, secret_id: &str, valid_seconds: u32) -> String {
+    pub fn get_signature(&self, secret_key: &str, secret_id: &str, security_token: Option<String>, valid_seconds: u32) -> String {
         let key_time = self.get_key_time(valid_seconds);
         let string_to_sign = self.get_string_to_sign(&key_time);
         let sign_key = self.get_sign_key(&key_time, secret_key);
         let signature = self.get_sign_key(&string_to_sign, &sign_key);
         let header_list = self.get_header_list();
         let param_list = self.get_url_param_list();
-        format!("q-sign-algorithm=sha1&q-ak={}&q-sign-time={}&q-key-time={}&q-header-list={}&q-url-param-list={}&q-signature={}", secret_id, key_time, key_time, header_list, param_list, signature)
+        let mut s_token = String::new();
+        if let Some(st) = security_token {
+            s_token = st;
+        }
+        format!("q-sign-algorithm=sha1&q-ak={}&q-sign-time={}&q-key-time={}&q-header-list={}&q-url-param-list={}&q-signature={}&x-cos-security-token={}", secret_id, key_time, key_time, header_list, param_list, signature, s_token)
     }
 }
 
