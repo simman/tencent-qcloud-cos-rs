@@ -1,3 +1,4 @@
+[![Crates.io](https://img.shields.io/crates/v/tencent-qcloud-cos-rs?style=flat-square)](https://crates.io/crates/tencent-qcloud-cos-rs)
 [![qcos](https://github.com/simman/tencent-qcloud-cos-rs/actions/workflows/qcos.yml/badge.svg?branch=master)](https://github.com/simman/tencent-qcloud-cos-rs/actions/workflows/qcos.yml)
 
 **异步版本** `async`/`await`
